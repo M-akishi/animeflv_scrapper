@@ -5,7 +5,7 @@ import shutil
 import sys
 import os
 
-os.environ["PLAYWRIGHT_BROWSERS_PATH"] = ".local-browsers"
+BASE_PATH = os.path.dirname(os.path.abspath(sys.executable if hasattr(sys, 'frozen') else __file__))
 BASE_URL = "https://www3.animeflv.net"
 
 def check_dependencies():
@@ -17,7 +17,8 @@ def check_dependencies():
 
 def crear_navegador_headless():
     p = sync_playwright().start()
-    browser = p.firefox.launch(headless=True)
+    firefox_path = os.path.join(BASE_PATH, ".local-browsers", "firefox-1482", "firefox", "firefox.exe")
+    browser = p.firefox.launch(headless=True, executable_path=firefox_path)
     context = browser.new_context(user_agent="Mozilla/5.0")
     page = context.new_page()
     return p, browser, context, page

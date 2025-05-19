@@ -13,8 +13,6 @@ Este proyecto permite buscar y reproducir anime desde [AnimeFLV](https://www3.an
 
 ---
 
-
-
 ## Licencia
 
 Este proyecto es software libre y de código abierto bajo la licencia MIT.
