@@ -39,14 +39,20 @@ if errorlevel 1 (
 if not exist "%VENV_DIR%\Scripts\activate.bat" (
     echo [INFO] Entorno virtual no encontrado. Creando...
     python -m venv %VENV_DIR%
+
+    echo [INFO] Activando entorno virtual...
+    call "%VENV_DIR%\Scripts\activate.bat"
+
+    echo [INFO] Instalando dependencias...
+    pip install --upgrade pip
+    pip install -r requirements.txt
+
+    echo [INFO] Instalando navegadores para Playwright...
+    playwright install firefox
 )
 
 echo [INFO] Activando entorno virtual...
 call "%VENV_DIR%\Scripts\activate.bat"
-
-echo [INFO] Instalando dependencias...
-pip install --upgrade pip
-pip install -r requirements.txt
 
 :: Ejecutar el script principal
 echo [INFO] Ejecutando %SCRIPT%...
