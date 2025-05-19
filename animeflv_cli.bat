@@ -1,6 +1,8 @@
 @echo off
 setlocal
 
+cd /d "%~dp0"
+
 set VENV_DIR=venv
 set SCRIPT=animeflv_cli.py
 
@@ -37,15 +39,14 @@ if errorlevel 1 (
 if not exist "%VENV_DIR%\Scripts\activate.bat" (
     echo [INFO] Entorno virtual no encontrado. Creando...
     python -m venv %VENV_DIR%
-    
-    echo [INFO] Activando e instalando dependencias...
-    call "%VENV_DIR%\Scripts\activate.bat"
-    pip install --upgrade pip
-    pip install -r requirements.txt
-) else (
-    echo [INFO] Entorno virtual encontrado.
-    call "%VENV_DIR%\Scripts\activate.bat"
 )
+
+echo [INFO] Activando entorno virtual...
+call "%VENV_DIR%\Scripts\activate.bat"
+
+echo [INFO] Instalando dependencias...
+pip install --upgrade pip
+pip install -r requirements.txt
 
 :: Ejecutar el script principal
 echo [INFO] Ejecutando %SCRIPT%...
