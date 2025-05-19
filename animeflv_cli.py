@@ -1,8 +1,19 @@
 from playwright.sync_api import sync_playwright
 import re
 import subprocess
+import shutil
+import sys
+import os
 
+os.environ["PLAYWRIGHT_BROWSERS_PATH"] = ".local-browsers"
 BASE_URL = "https://www3.animeflv.net"
+
+def check_dependencies():
+    for dep in ["mpv", "yt-dlp"]:
+        if not shutil.which(dep):
+            print(f"[ERROR] No se encontró '{dep}' en el PATH.")
+            print(f"Por favor instala '{dep}', por ejemplo usando: scoop install {dep}")
+            sys.exit(1)
 
 def crear_navegador_headless():
     p = sync_playwright().start()
@@ -140,4 +151,5 @@ def main():
                 print("No se encontró el enlace Maru para este episodio.")
 
 if __name__ == "__main__":
+    check_dependencies()
     main()
