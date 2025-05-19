@@ -21,13 +21,13 @@ Este proyecto permite buscar y reproducir anime desde [AnimeFLV](https://www3.an
    cd animeflv_scrapper
    ```
 
-2. (Opcional) Agrega la carpeta del proyecto al PATH de usuario para poder ejecutar el comando desde cualquier ubicación:
+2. (Opcional) Agrega la carpeta del proyecto al PATH poder ejecutar el comando desde cualquier ubicación:
 
    ```powershell
    .\agregar_al_path.ps1
    ```
 
-   Esto registrará la ruta donde está el script `animeflv_cli.bat` en el PATH de tu usuario.
+   Esto registrará la ruta donde está el script `animeflv_cli.bat` en el PATH.
 
 3. Prepara el entorno e instala dependencias, y lanza el scrapper con el archivo por lotes:
 
